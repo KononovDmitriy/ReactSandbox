@@ -16,7 +16,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('src/scripts/**/*.js')
+  return gulp.src('src/scripts/**/*')
     .pipe(webpack({
         mode: 'development',
         devtool: 'source-map',
@@ -28,6 +28,10 @@ gulp.task('scripts', () => {
             {
               test: /\.js?$/,
               use: 'babel-loader'
+            },
+            {
+              test: /\.css/,
+              use: ['style-loader', 'css-loader']
             }
           ]
         }
