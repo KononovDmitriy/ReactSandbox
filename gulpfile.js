@@ -52,7 +52,7 @@ gulp.task('websrv', () => {
 
   gulp.watch('src/*.html', gulp.series('html'));
   gulp.watch('src/css/*.css', gulp.series('styles'));
-  gulp.watch('src/scripts/**/*.js', gulp.series('scripts'));
+  gulp.watch('src/scripts/**/*', gulp.series('scripts'));
 });
 
 gulp.task('run', gulp.series('del', 'html', 'styles', 'scripts', 'websrv'));

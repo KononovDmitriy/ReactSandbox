@@ -6,7 +6,7 @@ export default (OriginalComponent) => class WrappedComponent extends ReactCompon
     }
 
     render() {
-        return <OriginalComponent {...this.props} {...this.state} toggleOpen = {this.toggleOpen} ref = {this.getRef}/>
+        return <OriginalComponent {...this.props} {...this.state} toggleOpen = {this.toggleOpen} />
     }
 
     toggleOpen = (ev) => {

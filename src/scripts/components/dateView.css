@@ -1,0 +1,17 @@
+.date-wrapper {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.flex-wrapper {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.date-wrapper-inc {
+  margin-bottom: 5px;
+}
+
+.date-wrapper-out {
+  margin-right: 10px;
+}
