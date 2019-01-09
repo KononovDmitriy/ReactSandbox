@@ -16,7 +16,7 @@ gulp.task('styles', () => {
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('src/scripts/**/*.js')
+  return gulp.src('src/scripts/**/*')
     .pipe(webpack({
         mode: 'development',
         devtool: 'source-map',
@@ -28,6 +28,10 @@ gulp.task('scripts', () => {
             {
               test: /\.js?$/,
               use: 'babel-loader'
+            },
+            {
+              test: /\.css/,
+              use: ['style-loader', 'css-loader']
             }
           ]
         }
@@ -48,7 +52,7 @@ gulp.task('websrv', () => {
 
   gulp.watch('src/*.html', gulp.series('html'));
   gulp.watch('src/css/*.css', gulp.series('styles'));
-  gulp.watch('src/scripts/**/*.js', gulp.series('scripts'));
+  gulp.watch('src/scripts/**/*', gulp.series('scripts'));
 });
 
 gulp.task('run', gulp.series('del', 'html', 'styles', 'scripts', 'websrv'));
