@@ -1,0 +1,32 @@
+.comment-form * {
+  box-sizing: border-box;
+}
+
+.comment-form {
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 0px 15px 15px 15px;
+  width: 200px;
+  box-shadow: 0px 0px 10px;
+}
+
+.comment-form-label {
+  font-weight: bold;
+}
+
+.comment-form-input-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.comment-form-section {
+  margin-top: 10px;
+}
+
+.comment-form-input {
+  width: 200px;
+}
+
+.comment-form-input-alert {
+  box-shadow: 0px 0px 5px red;
+}

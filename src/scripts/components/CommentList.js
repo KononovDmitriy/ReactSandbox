@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Comment from './Comment'
 import toggleOpen from '../decorators/toggleOpen'
-import AddCommentForm from './AddCommentForm.js'
+import CommentForm from './CommentForm.js'
 
 function CommentList({comments = [], isOpen, toggleOpen}) {
     const text = isOpen ? 'hide comments' : 'show comments'
@@ -10,7 +10,7 @@ function CommentList({comments = [], isOpen, toggleOpen}) {
       <div>
           <button onClick={toggleOpen}>{text}</button>
           {getBody({comments, isOpen})}
-          {(isOpen) ? <AddCommentForm /> : null}
+          {(isOpen) ? <CommentForm /> : null}
       </div>
     )
 }
