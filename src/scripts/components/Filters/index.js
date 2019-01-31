@@ -3,23 +3,34 @@ import PropTypes from 'prop-types'
 import DateRange from './DateRange'
 import SelectFilter from './Select'
 import {connect} from 'react-redux'
-import {updateSelectBox, updateDateRange} from './../../AC'
+import {updateSelectBox, updateDateState} from './../../AC'
 
 class Filters extends Component {
     static propTypes = {
-        articles: PropTypes.array
+        articles: PropTypes.array,
+        selectedArticles: PropTypes.array,
+        date: PropTypes.object
     };
 
     render() {
-        const { articles, selectedArticles } = this.props
+        const {
+          articles,
+          selectedArticles,
+          date,
+          updateSelectBox,
+          updateDateState
+        } = this.props
         return (
             <div>
                 <SelectFilter
                   articles = {articles}
-                  handleChange = {this.handleSelectUpdate}
+                  handleChange = {updateSelectBox}
                   selected = {selectedArticles}
                  />
-                <DateRange />
+                <DateRange
+                  dateState = {date}
+                  handleClick = {updateDateState}
+                />
             </div>
         )
     }
@@ -31,9 +42,10 @@ class Filters extends Component {
 
 export default connect(state =>({
   articles: state.articles,
-  selectedArticles: state.articleFilters.selected
+  selectedArticles: state.articleFilters.selected,
+  date: state.articleFilters.dateState
 }), {
   updateSelectBox,
-  updateDateRange
+  updateDateState
 })(Filters)
 

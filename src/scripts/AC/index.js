@@ -1,4 +1,4 @@
-import {DELETE_ARTICLE, INCREMENT, UPDATE_SELECT_BOX, UPDATE_DATE_RANGE} from '../constants'
+import {DELETE_ARTICLE, INCREMENT, UPDATE_SELECT_BOX, UPDATE_DATE_STATE} from '../constants'
 
 export function increment() {
     return {
@@ -20,8 +20,9 @@ export function updateSelectBox(selected) {
     }
 }
 
-export function updateDateRange() {
+export function updateDateState(dateState) {
     return {
-        type: UPDATE_DATE_RANGE,
+        type: UPDATE_DATE_STATE,
+        payload: { dateState }
     }
 }
