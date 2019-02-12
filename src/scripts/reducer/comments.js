@@ -9,6 +9,10 @@ const commentsMap = defaulComments.reduce((acc, comment) => {
 export default (commentsState = commentsMap, action) => {
     const {type, payload} = action
 
+    console.log('--------Comments-------')
+    console.dir(commentsState)
+    console.log('-----------------------')
+
     switch (type) {
     }
 

@@ -20,6 +20,7 @@
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "node-gyp": "^3.8.0",
+    "normalizr": "^3.3.0",
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-day-picker": "^7.2.4",
