@@ -1,21 +1,21 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {toggleOpenArticleId} from '../AC'
 
-export default Component => class Accordion extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            openItemId: props.defaultOpenId
-        }
-    }
+export default Component => {
+  class Accordion extends React.Component {
 
-    render() {
-        return <Component {...this.props} toggleOpenItem = {this.toggleOpenItem} openItemId = {this.state.openItemId}/>
-    }
+      render() {
+          const { openItemId } = this.props
+          return <Component {...this.props} toggleOpenItem = {this.toggleOpenItem} openItemId = {openItemId}/>
+      }
 
-    toggleOpenItem = openItemId => ev => {
-        this.setState({
-            openItemId: openItemId === this.state.openItemId ? null : openItemId
-        })
-    }
+      toggleOpenItem = openItemId => ev => {
+          this.props.toggleOpenArticleId(openItemId === this.props.openItemId ? null : openItemId)
+      }
+  }
 
+  return connect((state) => ({
+    openItemId: state.openArticleId
+  }), { toggleOpenArticleId })(Accordion)
 }

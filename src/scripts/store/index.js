@@ -1,8 +1,6 @@
-import {createStore, applyMiddleware} from 'redux'
+import {createStore} from 'redux'
 import reducer from '../reducer'
-import logger from '../middlewares/logger'
-
-const enhancer = applyMiddleware(logger)
+import enhancer from '../middlewares'
 
 const store = createStore(reducer, {}, enhancer)
 

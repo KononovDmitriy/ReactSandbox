@@ -150,9 +150,6 @@ const articles = [ article ]
 
 const normalizedData = normalize(originalArticles, articles);
 
-console.log('----- normalizedData -------')
-console.dir(normalizedData)
-
 export const normalizedComments = normalizedData.entities.comments
 export const normalizedArticles = normalizedData.entities.articles
 export const articlesList = normalizedData.result
