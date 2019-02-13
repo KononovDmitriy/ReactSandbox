@@ -8,16 +8,17 @@ import 'react-select/dist/react-select.css'
 
 class SelectFilter extends Component {
     static propTypes = {
-        articles: PropTypes.array.isRequired
+        articlesList: PropTypes.array.isRequired,
+        articles: PropTypes.object.isRequired
     };
 
     handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
 
     render() {
-        const { articles, selected } = this.props
-        const options = articles.map(article => ({
-            label: article.title,
-            value: article.id
+        const { articlesList, articles, selected } = this.props
+        const options = articlesList.map(articleId => ({
+            label: articles[articleId].title,
+            value: articles[articleId].id
         }))
 
         return <Select
@@ -31,5 +32,6 @@ class SelectFilter extends Component {
 
 export default connect(state => ({
     selected: state.filters.selected,
+    articlesList: state.articlesList,
     articles: state.articles
 }), { changeSelection })(SelectFilter)
