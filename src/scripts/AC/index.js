@@ -1,5 +1,5 @@
 import {DELETE_ARTICLE, INCREMENT, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT,
-    LOAD_ALL_ARTICLES, LOAD_ARTICLE, START, SUCCESS, FAIL
+    LOAD_ALL_ARTICLES, LOAD_ARTICLE, LOAD_COMMENT, START, SUCCESS, FAIL
 } from '../constants'
 
 export function increment() {
@@ -26,6 +26,13 @@ export function changeSelection(selected) {
     return {
         type: CHANGE_SELECTION,
         payload: { selected }
+    }
+}
+
+export function loadComments(articleId) {
+    return {
+        type: LOAD_COMMENT,
+        callAPI: `/api/article?article=${articleId}`
     }
 }
 
