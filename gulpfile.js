@@ -2,6 +2,8 @@ const gulp = require('gulp');
 const del = require('del');
 const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
+var url = require('url');
+var proxy = require('proxy-middleware');
 
 gulp.task('html', () => {
   return gulp.src('src/**/*.html')
@@ -46,8 +48,13 @@ gulp.task('del', (c) => {
 });
 
 gulp.task('websrv', () => {
+
+  var proxyOptions = url.parse('http://localhost:3001/api');
+  proxyOptions.route = '/api';
+
   browserSync.init({
-        server: 'build'
+        server: 'build',
+        middleware: [proxy(proxyOptions)]
     });
 
   gulp.watch('src/*.html', gulp.series('html'));

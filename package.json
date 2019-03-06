@@ -23,6 +23,7 @@
     "immutable": "^4.0.0-rc.12",
     "node-gyp": "^3.8.0",
     "prop-types": "^15.6.2",
+    "proxy-middleware": "^0.15.0",
     "react": "^16.6.3",
     "react-day-picker": "^7.2.4",
     "react-dom": "^16.6.3",
@@ -33,6 +34,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "style-loader": "^0.23.1",
+    "url": "^0.11.0",
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
