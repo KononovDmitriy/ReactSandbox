@@ -6,44 +6,64 @@ import toggleOpen from '../decorators/toggleOpen'
 import {loadComments} from '../AC'
 import Loader from './Loader'
 import {connect} from 'react-redux'
+import {commentSelectorFactory} from '../selectors'
 
-function CommentList({article, isOpen, toggleOpen}) {
+class CommentList extends Component {
+  static propTypes = {
+    }
+
+  render() {
+    const { article, isOpen, toggleOpen } = this.props
+
     const text = isOpen ? 'hide comments' : 'show comments'
     return (
         <div>
-            <button onClick={toggleOpen}>{text}</button>
-            {getBody({article, isOpen})}
+            <button onClick={this.onClickHandler}>{text}</button>
+            {this.getBody(
+              this.props.comments,
+              isOpen,
+              article)}
         </div>
     )
-}
+  }
 
-CommentList.propTypes = {
-    comments: PropTypes.array,
-    //from toggleOpen decorator
-    isOpen: PropTypes.bool,
-    toggleOpen: PropTypes.func
-}
+  onClickHandler = () => {
+    const { article, loadComments, toggleOpen } = this.props
 
-function getBody({article: {comments = [], id}, isOpen}) {
-    console.log(`Article ID = ${id}`)
-    console.dir(comments)
+    loadComments(article.id)
+    toggleOpen()
+  }
+
+  getBody(comments, isOpen, article) {
+
     if (!isOpen) return null
+
     if (comments.loading) return <Loader/>
-    if (!comments.length) return (
+    if (!article.comments.length) return (
         <div>
             <p>No comments yet</p>
-            <CommentForm articleId = {id} />
+            <CommentForm articleId = {article.id} />
         </div>
     )
+
+    const commentSelector = commentSelectorFactory()
 
     return (
         <div>
             <ul>
-                {comments.map(id => <li key={id}><Comment id = {id}/></li>)}
+                {article.comments.map((id) =>
+                  (<li key={id}>
+                    <Comment comment = {comments.getIn(['entities', id])}/>
+                  </li>))}
             </ul>
-            <CommentForm articleId = {id} />
+            <CommentForm articleId = {article.id} />
         </div>
     )
+  }
 }
 
-export default connect(null, {loadComments})(toggleOpen(CommentList))
+export default connect((state) => {
+  return {
+    comments: state.comments
+  }
+}, {loadComments})(toggleOpen(CommentList))

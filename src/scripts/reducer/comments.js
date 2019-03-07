@@ -19,9 +19,11 @@ export default (commentsState = commentsMap, action) => {
             return {...commentsState, [randomId]: payload.comment}
 
         case LOAD_COMMENT + START:
+          console.log('REDUCER LOAD_COMMENT_START')
           return commentsState.set('loading', true)
 
         case LOAD_COMMENT + SUCCESS:
+          console.log('REDUCER LOAD_COMMENT_SUCCESS')
           return commentsState
               .set('entities', arrToMap(response, CommentRecord))
               .set('loading', false)
