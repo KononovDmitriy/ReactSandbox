@@ -24,6 +24,7 @@ export default (commentsState = commentsMap, action) => {
 
         case LOAD_COMMENT + SUCCESS:
           console.log('REDUCER LOAD_COMMENT_SUCCESS')
+          console.dir(action)
           return commentsState
               .set('entities', arrToMap(response, CommentRecord))
               .set('loading', false)

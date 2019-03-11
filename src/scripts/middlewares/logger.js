@@ -1,6 +1,12 @@
 export default store => next => action => {
-    console.log('---', 'state before: ', store.getState())
+    const jsState = {
+      ... store.getState(),
+      articles: store.getState().articles.toJS(),
+      comments: store.getState().comments.toJS(),
+    }
+
+    console.log('---', 'state before: ', jsState)
     console.log('---', 'dispatching', action)
     next(action)
-    console.log('---', 'state after: ', store.getState())
+    console.log('---', 'state after: ', jsState)
 }

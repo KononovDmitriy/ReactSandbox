@@ -33,7 +33,8 @@ export function loadComments(articleId) {
     console.log('AC - loadComments')
     return {
         type: LOAD_COMMENT,
-        callAPI: `/api/comment?article=${articleId}`
+        callAPI: `/api/comment?article=${articleId}`,
+        payload: { articleId }
     }
 }
 

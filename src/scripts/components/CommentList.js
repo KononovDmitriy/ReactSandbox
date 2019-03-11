@@ -30,7 +30,7 @@ class CommentList extends Component {
   onClickHandler = () => {
     const { article, loadComments, toggleOpen } = this.props
 
-    loadComments(article.id)
+    if (!article.commentsLoaded) loadComments(article.id)
     toggleOpen()
   }
 
