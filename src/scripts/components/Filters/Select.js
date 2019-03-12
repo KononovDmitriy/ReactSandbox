@@ -7,9 +7,9 @@ import {mapToArr} from '../../helpers'
 import 'react-select/dist/react-select.css'
 
 class SelectFilter extends Component {
-    static propTypes = {
-        // articles: PropTypes.array.isRequired
-    };
+    // static propTypes = {
+    //     articles: PropTypes.array.isRequired
+    // };
 
     handleChange = selected => this.props.changeSelection(selected.map(option => option.value))
 
