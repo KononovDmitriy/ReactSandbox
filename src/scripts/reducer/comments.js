@@ -19,14 +19,11 @@ export default (commentsState = commentsMap, action) => {
             return {...commentsState, [randomId]: payload.comment}
 
         case LOAD_COMMENT + START:
-          console.log('REDUCER LOAD_COMMENT_START')
           return commentsState.set('loading', true)
 
         case LOAD_COMMENT + SUCCESS:
-          console.log('REDUCER LOAD_COMMENT_SUCCESS')
-          console.dir(action)
           return commentsState
-              .set('entities', arrToMap(response, CommentRecord))
+              .mergeIn(['entities'], arrToMap(response, CommentRecord))
               .set('loading', false)
               .set('loaded', true)
     }

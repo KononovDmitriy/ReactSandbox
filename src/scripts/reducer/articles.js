@@ -28,7 +28,6 @@ export default (articleState = defaultState, action) => {
             )
 
         case LOAD_COMMENT + SUCCESS:
-            console.log('---article----LOAD_COMMENT SUCCESS')
             return articleState.setIn(['entities', payload.articleId, 'commentsLoaded'], true)
 
         case LOAD_ALL_ARTICLES + START:
