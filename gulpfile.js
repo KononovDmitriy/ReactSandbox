@@ -4,6 +4,7 @@ const browserSync = require('browser-sync').create();
 const webpack = require('webpack-stream');
 var url = require('url');
 var proxy = require('proxy-middleware');
+var historyApiFallback = require('connect-history-api-fallback');
 
 gulp.task('html', () => {
   return gulp.src('src/**/*.html')
@@ -54,7 +55,7 @@ gulp.task('websrv', () => {
 
   browserSync.init({
         server: 'build',
-        middleware: [proxy(proxyOptions)]
+        middleware: [proxy(proxyOptions), historyApiFallback()]
     });
 
   gulp.watch('src/*.html', gulp.series('html'));
